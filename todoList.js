@@ -4,39 +4,73 @@ function onLoadHandler() {
 
 window.addEventListener("load", onLoadHandler);
 
-// Finished button (a circle) with a line through the text
-// Create a new list item when clicking the + button
-// Be able to delete tasks
-
 const addNewTasksButton = document.getElementById("toDoListButton");
 const inputForNewTasks = document.getElementById("inputForNewTasks");
 const toDoList = document.getElementById("toDoList");
 const toDoListTasks = document.getElementById("toDoListTasks");
 
+// Array for all tasks, empty by default
 let toDoTasks = [];
 
+// The plus button to add tasks to the list
 addNewTasksButton.addEventListener("click", () => {
   addNewTasks();
 });
 
+// Function to add new tasks in the array
 function addNewTasks() {
+  // Object with information of the to do's
+  // Name = the text written in the input field
+  // Done = if it is checked or not, false by default
   const newToDo = {
     name: inputForNewTasks.value,
     done: false,
   };
 
+  // To add object to array
   toDoTasks.push(newToDo);
 
   const toDoElement = document.createElement("li");
   const toDoParagraph = document.createElement("p");
+
+  // The name (text written in input) of the to do task
+  // The names will be put in a paragraph that is displayed as an li element
   toDoParagraph.innerText = newToDo.name;
 
   const radioButton = document.createElement("input");
   radioButton.type = "radio";
   radioButton.checked = false;
+
+  // References to elements in order to access them
+  newToDo.radioBtn = radioButton;
+  newToDo.nameElement = toDoParagraph;
+  newToDo.parent = toDoElement;
+
+  // Parameter newToDo to know which object is clicked
+  radioButton.addEventListener("click", () => {
+    checkedToDo(newToDo);
+  });
+
+  const trashcanIcon = document.createElement("img");
+  trashcanIcon.src = "trashcan.svg";
+
+  // Parameter newToDo to know which object is clicked
+  trashcanIcon.addEventListener("click", () => {
+    deleteToDo(newToDo);
+  });
+
   toDoElement.appendChild(radioButton);
   toDoElement.appendChild(toDoParagraph);
+  toDoElement.appendChild(trashcanIcon);
   toDoListTasks.appendChild(toDoElement);
 
   inputForNewTasks.value = "";
+}
+
+function checkedToDo(toDo) {
+  toDo.nameElement.style.textDecoration = "line-through";
+}
+
+function deleteToDo(toDo) {
+  toDoListTasks.removeChild(toDo.parent);
 }

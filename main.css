@@ -56,11 +56,11 @@ form {
 
 ul li {
   display: grid;
-  grid-template-columns: 1rem 1fr;
+  grid-template-columns: 1rem 1fr 1.2rem;
 }
 
 ul li p {
-  margin: 0;
+  margin: auto;
   margin-left: 0.5rem;
 }
 
@@ -77,4 +77,10 @@ ul li input {
 ul li input:checked {
   background: #588157;
   border: 3px solid #ffffff;
+}
+
+ul li img {
+  width: 1.2rem;
+  margin: auto;
+  cursor: pointer;
 }
