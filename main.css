@@ -1,0 +1,31 @@
+html,
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-color: #dad7cd;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background-color: #ffffff;
+  width: 90%;
+  max-width: 20rem;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+h1 {
+  text-align: center;
+  color: #a3b18a;
+  margin: 0;
+}
+
+#toDoList {
+  padding: 1rem;
+}
