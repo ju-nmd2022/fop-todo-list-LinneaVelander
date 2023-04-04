@@ -29,3 +29,27 @@ h1 {
 #toDoList {
   padding: 1rem;
 }
+
+form {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+#inputForNewTasks {
+  font-size: 0.75rem;
+  padding: 0.2rem;
+  border: 1px solid #588157;
+}
+
+#toDoListButton {
+  background-color: #ffffff;
+  border: 1px solid #588157;
+  border-left: 0;
+  color: #588157;
+  cursor: pointer;
+}
+
+#toDoListTasks {
+  background-color: black;
+}
