@@ -13,13 +13,30 @@ const inputForNewTasks = document.getElementById("inputForNewTasks");
 const toDoList = document.getElementById("toDoList");
 const toDoListTasks = document.getElementById("toDoListTasks");
 
-let newToDoTasks = [];
+let toDoTasks = [];
 
-addNewTasksButton.addEventListener("click", addNewTasks);
+addNewTasksButton.addEventListener("click", () => {
+  addNewTasks();
+});
 
 function addNewTasks() {
-  if (inputForNewTasks.value.length > 0) {
-    const listOfNewTasks = document.createElement("li");
-    listOfNewTasks.appendChild(toDoListTasks);
-  }
+  const newToDo = {
+    name: inputForNewTasks.value,
+    done: false,
+  };
+
+  toDoTasks.push(newToDo);
+
+  const toDoElement = document.createElement("li");
+  const toDoParagraph = document.createElement("p");
+  toDoParagraph.innerText = newToDo.name;
+
+  const radioButton = document.createElement("input");
+  radioButton.type = "radio";
+  radioButton.checked = false;
+  toDoElement.appendChild(radioButton);
+  toDoElement.appendChild(toDoParagraph);
+  toDoListTasks.appendChild(toDoElement);
+
+  inputForNewTasks.value = "";
 }
