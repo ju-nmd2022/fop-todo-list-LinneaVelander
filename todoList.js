@@ -14,11 +14,11 @@ let toDoTasks = [];
 
 // The plus button to add tasks to the list
 addNewTasksButton.addEventListener("click", () => {
-  addNewTasks();
+  createTask();
 });
 
-// Function to add new tasks in the array
-function addNewTasks() {
+// Function to add create tasks in the array
+function createTask() {
   // Object with information of the to do's
   // Name = the text written in the input field
   // Done = if it is checked or not, false by default
@@ -62,15 +62,39 @@ function addNewTasks() {
   toDoElement.appendChild(radioButton);
   toDoElement.appendChild(toDoParagraph);
   toDoElement.appendChild(trashcanIcon);
-  toDoListTasks.appendChild(toDoElement);
+  drawToDo(newToDo);
 
   inputForNewTasks.value = "";
 }
 
+// Draws the list in ul element
+function drawToDo(toDo) {
+  toDoListTasks.appendChild(toDo.parent);
+}
+
 function checkedToDo(toDo) {
   toDo.nameElement.style.textDecoration = "line-through";
+  toDo.done = true;
 }
 
 function deleteToDo(toDo) {
   toDoListTasks.removeChild(toDo.parent);
 }
+
+function sortToDos() {
+  toDoTasks.sort((a, b) => a.done == true && b.done == false);
+  refreshList();
+}
+
+function refreshList() {
+  toDoListTasks.innerHTML = "";
+  toDoTasks.forEach((toDo) => {
+    drawToDo(toDo);
+  });
+}
+
+const btn = document.getElementById("btn");
+
+btn.addEventListener("click", () => {
+  sortToDos();
+});
