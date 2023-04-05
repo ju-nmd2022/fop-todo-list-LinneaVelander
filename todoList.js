@@ -75,6 +75,7 @@ function drawToDo(toDo) {
 function checkedToDo(toDo) {
   toDo.nameElement.style.textDecoration = "line-through";
   toDo.done = true;
+  sortToDos();
 }
 
 function deleteToDo(toDo) {
@@ -92,9 +93,3 @@ function refreshList() {
     drawToDo(toDo);
   });
 }
-
-const btn = document.getElementById("btn");
-
-btn.addEventListener("click", () => {
-  sortToDos();
-});
