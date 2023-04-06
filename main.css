@@ -2,7 +2,7 @@ html,
 body {
   font-family: sans-serif;
   margin: 0;
-  background-color: #dad7cd;
+  background-color: #778c7a;
 }
 
 body {
@@ -23,7 +23,7 @@ body {
 
 h1 {
   text-align: center;
-  color: #a3b18a;
+  color: #bbc6bd;
   margin: 0;
 }
 
@@ -38,17 +38,24 @@ form {
 }
 
 #inputForNewTasks {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   padding: 0.2rem;
-  border: 1px solid #588157;
+  border: none;
+  border-bottom: 1px solid #778c7a;
+}
+
+#inputForNewTasks:focus {
+  outline: none;
 }
 
 #toDoListButton {
   background-color: #ffffff;
-  border: 1px solid #588157;
-  border-left: 0;
-  color: #588157;
+  border: none;
+  border-bottom: 1px solid #778c7a;
+  color: #778c7a;
   cursor: pointer;
+  transition: 0.3s;
+  font-size: 1rem;
 }
 
 #toDoListTasks {
@@ -63,6 +70,8 @@ ul li {
 ul li p {
   margin: auto;
   margin-left: 0.5rem;
+  font-size: 1rem;
+  font-weight: lighter;
 }
 
 ul li input {
@@ -70,13 +79,13 @@ ul li input {
   height: 1rem;
   border-radius: 1rem;
   appearance: none;
-  box-shadow: 0 0 0 1px #588157;
+  box-shadow: 0 0 0 1px #778c7a;
   background: #ffffff;
   cursor: pointer;
 }
 
 ul li input:checked {
-  background: #588157;
+  background: #778c7a;
   border: 3px solid #ffffff;
 }
 
