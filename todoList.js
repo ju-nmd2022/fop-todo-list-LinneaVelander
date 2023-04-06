@@ -65,6 +65,13 @@ function createTask() {
   drawToDo(newToDo);
 
   inputForNewTasks.value = "";
+
+  // Local Storage. Set the item to the name of the to do
+  // Stringify since it is an object and local storage only can store strings
+  localStorage.setItem(newToDo.name, JSON.stringify(newToDo));
+  localStorage.getItem(newToDo);
+
+  console.log(localStorage);
 }
 
 // Draws the list in ul element
@@ -83,7 +90,7 @@ function deleteToDo(toDo) {
 }
 
 function sortToDos() {
-  toDoTasks.sort((a, b) => a.done == true && b.done == false);
+  toDoTasks.sort((a, b) => a.done === true && b.done === false);
   refreshList();
 }
 
