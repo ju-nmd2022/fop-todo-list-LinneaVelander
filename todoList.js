@@ -14,7 +14,7 @@ const TO_DO_KEY = "toDoKey";
 // Array for all tasks, empty by default
 let toDoTasks = [];
 
-// fetchLocalStorage();
+fetchLocalStorage();
 
 // The plus button to add tasks to the list.
 // If input field length is larger than 0 you may add your task
@@ -107,7 +107,9 @@ function drawToDo(toDo) {
 
 // When a to do task is checked.
 function checkedToDo(toDo) {
+  // A toggle between checked and unchecked
   toDo.done = !toDo.done;
+
   saveLocalStorage();
   sortToDos();
 }
