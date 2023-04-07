@@ -41,16 +41,17 @@ function createTask() {
 
   inputForNewTasks.value = "";
   saveLocalStorage();
-
-  // Local Storage. Set the item to the name of the to do
-  // Stringify since it is an object and local storage only can store strings
 }
 
+// Local Storage. Set the item to the name of the to do
+// Stringify since it is an object and local storage only can store strings
 function saveLocalStorage() {
   let json = JSON.stringify(toDoTasks);
   localStorage.setItem(TO_DO_KEY, json);
 }
 
+// Local Storage. Get item.
+// Must parse to make it into an object again
 function fetchLocalStorage() {
   let json = localStorage.getItem(TO_DO_KEY);
 
@@ -63,13 +64,14 @@ function fetchLocalStorage() {
 
 // Draws the list in ul element
 function drawToDo(toDo) {
+  // The names will be put in a paragraph that is displayed as an li element
   const toDoElement = document.createElement("li");
   const toDoParagraph = document.createElement("p");
 
   // The name (text written in input) of the to do task
-  // The names will be put in a paragraph that is displayed as an li element
   toDoParagraph.innerText = toDo.name;
 
+  // Create the check button
   const radioButton = document.createElement("input");
   radioButton.type = "radio";
   radioButton.checked = toDo.done;
@@ -79,6 +81,7 @@ function drawToDo(toDo) {
   toDo.nameElement = toDoParagraph;
   toDo.parent = toDoElement;
 
+  // If the radio button is checked the text will be decorated with a line-through
   if (toDo.done) {
     toDo.nameElement.style.textDecoration = "line-through";
   }
@@ -102,6 +105,7 @@ function drawToDo(toDo) {
   toDoListTasks.appendChild(toDo.parent);
 }
 
+// When a to do task is checked.
 function checkedToDo(toDo) {
   toDo.done = !toDo.done;
   saveLocalStorage();
@@ -118,11 +122,14 @@ function deleteToDo(toDo) {
   saveLocalStorage();
 }
 
+// In order to sort all the to do tasks when checked.
+// If the above one (a) is checked (a.done === true) then it will sort so the b will be above
 function sortToDos() {
   toDoTasks.sort((a, b) => a.done === true && b.done === false);
   refreshList();
 }
 
+// To refresh the list. InnerHTML must be "cleaned" before writing a new to do - if not the task will be written again
 function refreshList() {
   toDoListTasks.innerHTML = "";
   toDoTasks.forEach((toDo) => {
