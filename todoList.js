@@ -18,11 +18,11 @@ let toDoTasks = [];
 
 // The plus button to add tasks to the list.
 // If input field length is larger than 0 you may add your task
-// if (inputForNewTasks.length > 0) {
 addNewTasksButton.addEventListener("click", () => {
-  createTask();
+  if (inputForNewTasks.value.length > 0) {
+    createTask();
+  }
 });
-// }
 
 // Function to add create tasks in the array
 function createTask() {
