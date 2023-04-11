@@ -10,14 +10,6 @@ let toDoTasks = [];
 
 fetchLocalStorage();
 
-// The plus button to add tasks to the list.
-// If input field length is larger than 0 you may add your task
-addNewTasksButton.addEventListener("click", () => {
-  if (inputForNewTasks.value.length > 0) {
-    createTask();
-  }
-});
-
 // Function to add create tasks in the array
 function createTask() {
   // Object with information of the to do's
@@ -37,6 +29,14 @@ function createTask() {
   saveLocalStorage();
 }
 
+// The plus button to add tasks to the list.
+// If input field length is larger than 0 you may add your task
+addNewTasksButton.addEventListener("click", () => {
+  if (inputForNewTasks.value.length > 0) {
+    createTask();
+  }
+});
+
 // Local Storage. Set the item to the name of the to do
 // Stringify since it is an object and local storage only can store strings
 function saveLocalStorage() {
@@ -49,7 +49,7 @@ function saveLocalStorage() {
 function fetchLocalStorage() {
   let json = localStorage.getItem(TO_DO_KEY);
 
-  if (json != null) {
+  if (json !== null) {
     let temp = JSON.parse(json);
     toDoTasks = temp;
     refreshList();
@@ -125,7 +125,7 @@ function sortToDos() {
   refreshList();
 }
 
-// To refresh the list. 
+// To refresh the list.
 // InnerHTML must be "cleaned" before writing a new to do - if not the task will be written again
 function refreshList() {
   toDoListTasks.innerHTML = "";
