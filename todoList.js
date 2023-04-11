@@ -106,7 +106,8 @@ function sortToDos() {
   refreshList();
 }
 
-// To refresh the list. InnerHTML must be "cleaned" before writing a new to do - if not the task will be written again
+// To refresh the list. 
+// InnerHTML must be "cleaned" before writing a new to do - if not the task will be written again
 function refreshList() {
   toDoListTasks.innerHTML = "";
   toDoTasks.forEach((toDo) => {
