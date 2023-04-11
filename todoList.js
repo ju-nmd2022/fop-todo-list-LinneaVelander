@@ -1,9 +1,3 @@
-function onLoadHandler() {
-  // Add elements that are made during the visit on the website, for example a list
-}
-
-window.addEventListener("load", onLoadHandler);
-
 const addNewTasksButton = document.getElementById("toDoListButton");
 const inputForNewTasks = document.getElementById("inputForNewTasks");
 const toDoList = document.getElementById("toDoList");
@@ -23,25 +17,6 @@ addNewTasksButton.addEventListener("click", () => {
     createTask();
   }
 });
-
-// Function to add create tasks in the array
-function createTask() {
-  // Object with information of the to do's
-  // Name = the text written in the input field
-  // Done = if it is checked or not, false by default
-  const newToDo = {
-    name: inputForNewTasks.value,
-    done: false,
-  };
-
-  // To add object to array
-  toDoTasks.push(newToDo);
-
-  sortToDos();
-
-  inputForNewTasks.value = "";
-  saveLocalStorage();
-}
 
 // Local Storage. Set the item to the name of the to do
 // Stringify since it is an object and local storage only can store strings
