@@ -18,6 +18,25 @@ addNewTasksButton.addEventListener("click", () => {
   }
 });
 
+// Function to add create tasks in the array
+function createTask() {
+  // Object with information of the to do's
+  // Name = the text written in the input field
+  // Done = if it is checked or not, false by default
+  const newToDo = {
+    name: inputForNewTasks.value,
+    done: false,
+  };
+
+  // To add object to array
+  toDoTasks.push(newToDo);
+
+  sortToDos();
+
+  inputForNewTasks.value = "";
+  saveLocalStorage();
+}
+
 // Local Storage. Set the item to the name of the to do
 // Stringify since it is an object and local storage only can store strings
 function saveLocalStorage() {
@@ -106,8 +125,7 @@ function sortToDos() {
   refreshList();
 }
 
-// To refresh the list. 
-// InnerHTML must be "cleaned" before writing a new to do - if not the task will be written again
+// To refresh the list. InnerHTML must be "cleaned" before writing a new to do - if not the task will be written again
 function refreshList() {
   toDoListTasks.innerHTML = "";
   toDoTasks.forEach((toDo) => {
