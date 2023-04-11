@@ -10,24 +10,6 @@ let toDoTasks = [];
 
 fetchLocalStorage();
 
-// Function to add create tasks in the array
-function createTask() {
-  // Object with information of the to do's
-  // Name = the text written in the input field
-  // Done = if it is checked or not, false by default
-  const newToDo = {
-    name: inputForNewTasks.value,
-    done: false,
-  };
-
-  // To add object to array
-  toDoTasks.push(newToDo);
-
-  sortToDos();
-
-  inputForNewTasks.value = "";
-  saveLocalStorage();
-}
 
 // The plus button to add tasks to the list.
 // If input field length is larger than 0 you may add your task
